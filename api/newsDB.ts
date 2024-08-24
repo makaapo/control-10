@@ -1,5 +1,5 @@
 import {promises as fs} from 'fs';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import {Comment, News, NewsMutation} from './types';
 import commentsDB from './commentsDB';
 
@@ -64,7 +64,7 @@ const newsDB = {
 
         data = data.filter(news => news.id !== id);
         await this.save();
-        return 'News was deleted';
+        return 'News deleted';
       }
     }
   },

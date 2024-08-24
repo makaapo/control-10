@@ -21,6 +21,7 @@ import {addComment, deleteComment, getCommentWithNews} from '../../Comments/comm
 import {CommentForm} from '../../../types';
 import {deleteCommLoading, selectComm, selectCommFetching} from '../../Comments/commetsSlice';
 import {toast} from 'react-toastify';
+import imageNotFound from '../../../assets/images/image-not-found.png';
 
 const ImageCardMedia = styled(CardMedia)({
   height: 0,
@@ -36,7 +37,11 @@ const PageOneNews = () => {
   const isCommFetching = useAppSelector(selectCommFetching);
   const isCommDeleting = useAppSelector(deleteCommLoading);
 
-  const cardImage = news?.image ? `${API_URL}/${news.image}` : null;
+  let cardImage = imageNotFound;
+
+  if (news?.image) {
+    cardImage = `${API_URL}/${news.image}`;
+  }
 
   const formatDate = dayjs(news?.date).format('DD.MM.YYYY HH:mm:ss');
 
@@ -66,20 +71,31 @@ const PageOneNews = () => {
   return (
     <Grid container direction="column" spacing={2} marginBottom={5}>
       {isFetching && (
-        <Grid item>
+        <Grid item
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+        }}>
           <CircularProgress />
         </Grid>
       )}
       {news && (
         <>
-          <Grid item component={Typography} variant="h4">
-            {news.title}
+          <Grid item>
+            <Typography variant="h4" sx={{fontWeight: 'bold', marginBottom: 2}}>
+              {news.title}
+            </Typography>
           </Grid>
-          <Grid item component={Typography} variant="h6">
-            {news.text}
+          <Grid item>
+            <Typography variant="body1" sx={{marginBottom: 2, lineHeight: 1.6}}>
+              {news.text}
+            </Typography>
           </Grid>
-          <Grid item component={Typography} variant="body1">
-            {formatDate}
+          <Grid item>
+            <Typography variant="body2" sx={{color: 'gray', marginBottom: 2}}>
+              {formatDate}
+            </Typography>
           </Grid>
           <Grid item sx={{width: '280px'}}>
             {cardImage && (

@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "news_id": "7b3f97c4-34f9-4df3-ad68-f1b237979d06",
+    "author": "Anonymous",
+    "text": "Какой ужас!!!",
+    "id": "f3f41669-df23-4628-97a4-4f076c8af8ff"
+  },
+  {
+    "news_id": "7b3f97c4-34f9-4df3-ad68-f1b237979d06",
+    "author": "Малик",
+    "text": "Как же они надоели",
+    "id": "ed2d0fda-e5de-453d-9cb7-1e9317bb9706"
+  },
+  {
+    "news_id": "cecf3119-7b4c-4604-a1cb-fabb3e202ca0",
+    "author": "Anonymous",
+    "text": "Сажать их надо",
+    "id": "d6b2ce70-9cd0-46ca-85f7-ee130a515a1b"
+  },
+  {
+    "news_id": "cecf3119-7b4c-4604-a1cb-fabb3e202ca0",
+    "author": "Артем",
+    "text": "Бедные медики",
+    "id": "eac061bb-4898-47e6-a26c-9c655d1dc673"
+  },
+  {
+    "news_id": "cecf3119-7b4c-4604-a1cb-fabb3e202ca0",
+    "author": "Теть Валя",
+    "text": "Примите уже меры!!!!!",
+    "id": "1b27f934-083b-409f-af8c-5a99beb809c3"
+  },
+  {
+    "news_id": "9e436821-cc1c-4383-b407-504b75bb6239",
+    "author": "Anonymous",
+    "text": "Урааааа",
+    "id": "6106f77a-f005-4b6b-a948-4205210cedc2"
+  },
+  {
+    "news_id": "9e436821-cc1c-4383-b407-504b75bb6239",
+    "author": "Инна",
+    "text": "Спасибо",
+    "id": "4dc8c848-d470-4471-a264-7cae4efa6480"
+  }
+]

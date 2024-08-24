@@ -28,7 +28,7 @@ const NewMessage = () => {
         borderRadius: 2,
         boxShadow: 1,
       }}>
-        <Typography variant="h4" sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography variant="h4" sx={{mb: 2, textAlign: 'center'}}>
           Add new post
         </Typography>
         <FormNews onSubmit={onFormSubmit} />

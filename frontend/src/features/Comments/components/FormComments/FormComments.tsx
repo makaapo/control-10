@@ -3,7 +3,6 @@ import {Button, CircularProgress, Grid, TextField} from '@mui/material';
 import {CommentForm} from '../../../../types';
 import {useAppSelector} from '../../../../app/hooks';
 import {selectCommCreating} from '../../commetsSlice';
-import {useNavigate} from 'react-router-dom';
 
 
 
@@ -14,7 +13,6 @@ interface Props {
 
 const FormComments: React.FC<Props> = ({onSubmit, id}) => {
   const isCreating = useAppSelector(selectCommCreating);
-  const navigate = useNavigate();
   const [state, setState] = useState<CommentForm>({
     news_id: id,
     author: '',
@@ -24,7 +22,12 @@ const FormComments: React.FC<Props> = ({onSubmit, id}) => {
   const submitForm = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit({...state});
-    navigate(`/news/${id}`);
+
+    setState({
+      news_id: id,
+      author: '',
+      text: '',
+    });
   };
 
   const inputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
