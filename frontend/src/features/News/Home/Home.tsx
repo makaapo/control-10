@@ -24,7 +24,7 @@ const Home = () => {
       dispatch(getNews());
       toast.success('Post deleted!');
     } catch (error) {
-      toast.error('category not deleted!');
+      toast.error('Post not deleted!');
     }
   };
 

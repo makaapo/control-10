@@ -66,13 +66,14 @@ const commentsDB = {
 
       if (comment) {
         data = data.filter(comment => comment.id !== id);
-        await this.save();
+        await this.save(data);
         return 'Comment deleted';
       }
     }
   },
-  async save() {
-    return fs.writeFile(filename, JSON.stringify(data, null, 2));
+  async save(dataUpdate?: Comment[]) {
+    if (dataUpdate === undefined) dataUpdate = data;
+    return fs.writeFile(filename, JSON.stringify(dataUpdate, null, 2));
   },
 };
 

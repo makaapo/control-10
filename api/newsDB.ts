@@ -60,7 +60,7 @@ const newsDB = {
       if (news) {
         let dataComments: Comment[] = await commentsDB.getComments();
         dataComments = dataComments.filter(comment => comment.news_id !== id);
-        await commentsDB.save();
+        await commentsDB.save(dataComments);
 
         data = data.filter(news => news.id !== id);
         await this.save();
