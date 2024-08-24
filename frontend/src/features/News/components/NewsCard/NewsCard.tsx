@@ -1,7 +1,8 @@
 import React from 'react';
-import {Card, CardContent, CardHeader, CardMedia, Grid, styled} from '@mui/material';
+import {Button, Card, CardContent, CardHeader, CardMedia, Grid, styled} from '@mui/material';
 import {API_URL} from '../../../../constants';
 import dayjs from 'dayjs';
+import {Link} from 'react-router-dom';
 
 const ImageCardMedia = styled(CardMedia)({
   height: 0,
@@ -9,12 +10,14 @@ const ImageCardMedia = styled(CardMedia)({
 });
 
 interface Props {
+  id: string;
   date: string;
   title: string;
   image: string | null;
+  deletePost: (id: string) => void;
 }
 
-const NewsCard: React.FC<Props> = ({date, title, image}) => {
+const NewsCard: React.FC<Props> = ({id,date, title, image, deletePost}) => {
   const cardImage = image ? `${API_URL}/${image}` : null;
 
   const formatDate = dayjs(date).format('DD.MM.YYYY HH:mm:ss');
@@ -28,6 +31,16 @@ const NewsCard: React.FC<Props> = ({date, title, image}) => {
         )}
         <CardContent>
           {title}
+          <Button variant="outlined" color="primary" component={Link} to={`/news/${id}`}>
+            Read full post
+          </Button>
+          <Button
+            variant="outlined" color="warning"
+            onClick={() => deletePost(id)}
+            className="ms-3 btn btn-danger"
+          >
+            Delete
+          </Button>
         </CardContent>
       </Card>
     </Grid>

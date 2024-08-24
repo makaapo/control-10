@@ -2,9 +2,10 @@ import {Button, CircularProgress, Grid, Typography} from '@mui/material';
 import {Link} from 'react-router-dom';
 import {useAppDispatch, useAppSelector} from '../../../app/hooks';
 import {selectNews, selectNewsFetching} from '../newsSlice';
-import {getNews} from '../newsThunks';
+import {deleteNews, getNews} from '../newsThunks';
 import {useEffect} from 'react';
 import NewsCard from '../components/NewsCard/NewsCard';
+import {toast} from 'react-toastify';
 
 const Home = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +15,18 @@ const Home = () => {
   useEffect(() => {
     dispatch(getNews());
   }, [dispatch]);
+
+  const newsDelete = async (id: string) => {
+    if (!confirm('Are you sure you want to delete this post?')) {
+      return;
+    } try {
+      await dispatch(deleteNews(id));
+      dispatch(getNews());
+      toast.success('Post deleted!');
+    } catch (error) {
+      toast.error('category not deleted!');
+    }
+  };
 
   return (
     <>
@@ -35,9 +48,11 @@ const Home = () => {
             {news.map((msg, index) => (
               <NewsCard
                 key={index}
+                id={msg.id}
                 date={msg.date}
                 title={msg.title}
                 image={msg.image ?? null}
+                deletePost={newsDelete}
               />
             ))}
           </Grid>}

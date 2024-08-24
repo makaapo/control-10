@@ -6,6 +6,8 @@ import {store} from './app/store';
 import {BrowserRouter} from 'react-router-dom';
 import {CssBaseline, ThemeProvider} from '@mui/material';
 import theme from './theme';
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 createRoot(document.getElementById('root')!).render(
@@ -13,6 +15,7 @@ createRoot(document.getElementById('root')!).render(
     <Provider store={store}>
       <BrowserRouter>
         <ThemeProvider theme={theme}>
+          <ToastContainer position="bottom-right" />
           <CssBaseline />
           <App />
         </ThemeProvider>
