@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {Button, CircularProgress, Grid, TextField} from '@mui/material';
 import {NewsForm} from '../../../../types';
 import {selectNewsCreating} from '../../newsSlice';
@@ -7,7 +7,7 @@ import FileInput from '../../../../UI/FileInput/FileInput';
 
 
 interface Props {
-  onSubmit: (mews: NewsForm) => void;
+  onSubmit: (news: NewsForm) => void;
 }
 
 const MessageForm: React.FC<Props> = ({onSubmit}) => {

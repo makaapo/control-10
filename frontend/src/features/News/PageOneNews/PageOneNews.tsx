@@ -6,6 +6,9 @@ import {selectOneNewsFetching, selectOneNewsPage} from '../newsSlice';
 import {oneNews} from '../newsThunks';
 import {API_URL} from '../../../constants';
 import dayjs from 'dayjs';
+import FormComments from '../../Comments/components/FormComments/FormComments';
+import {addComment, getCommentWithNews} from '../../Comments/commentsThunks';
+import {CommentForm} from '../../../types';
 
 const ImageCardMedia = styled(CardMedia)({
   height: 0,
@@ -24,7 +27,12 @@ const PageOneNews = () => {
 
   useEffect(() => {
     dispatch(oneNews(id));
+    dispatch(getCommentWithNews(id));
   }, [dispatch, id]);
+
+  const onFormCommSubmit = async (commMutation: CommentForm) => {
+    await dispatch(addComment(commMutation));
+  };
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -48,6 +56,12 @@ const PageOneNews = () => {
             {cardImage && (
               <ImageCardMedia image={cardImage}/>
             )}
+          </Grid>
+          <Grid item component={Typography} variant="body1">
+            <Typography variant="h5" sx={{mb: 2}}>
+              Add new comment
+            </Typography>
+            <FormComments onSubmit={onFormCommSubmit} id={id}/>
           </Grid>
         </>
       )}
