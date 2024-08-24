@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {News} from '../../types';
+import {News, NewsMutation} from '../../types';
 import {addNews, deleteNews, getNews, oneNews} from './newsThunks';
 
 
@@ -7,7 +7,7 @@ export interface NewsState {
   news: News[];
   newsFetching: boolean;
   isCreating: boolean;
-  oneNewsPage: News | null;
+  oneNewsPage: NewsMutation | null;
   oneNewsFetching: boolean;
   deleteNewsLoading: boolean;
 }

@@ -36,8 +36,12 @@ const Home = () => {
             <Typography variant="h4">News</Typography>
           </Grid>
           <Grid item>
-            <Button variant="outlined" color="primary" component={Link} to="/news/new">
-              Add news
+            <Button
+              variant="outlined"
+              color="primary"
+              component={Link} to="/news/new"
+            >
+              Add new post
             </Button>
           </Grid>
         </Grid>

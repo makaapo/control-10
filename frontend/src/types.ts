@@ -9,7 +9,7 @@ export interface NewsMutation {
   id: string,
   title: string,
   text: string,
-  image: File | null,
+  image: string | null,
   date: string,
 }
 

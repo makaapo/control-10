@@ -1,8 +1,10 @@
 import React from 'react';
-import {Button, Card, CardContent, CardHeader, CardMedia, Grid, styled} from '@mui/material';
+import {Button, Card, CardContent, CardHeader, CardMedia, CircularProgress, Grid, styled} from '@mui/material';
 import {API_URL} from '../../../../constants';
 import dayjs from 'dayjs';
 import {Link} from 'react-router-dom';
+import {useAppSelector} from '../../../../app/hooks';
+import {deleteNewsLoading} from '../../newsSlice';
 
 const ImageCardMedia = styled(CardMedia)({
   height: 0,
@@ -19,7 +21,7 @@ interface Props {
 
 const NewsCard: React.FC<Props> = ({id,date, title, image, deletePost}) => {
   const cardImage = image ? `${API_URL}/${image}` : null;
-
+  const isDeleting = useAppSelector(deleteNewsLoading);
   const formatDate = dayjs(date).format('DD.MM.YYYY HH:mm:ss');
 
   return (
@@ -38,8 +40,9 @@ const NewsCard: React.FC<Props> = ({id,date, title, image, deletePost}) => {
             variant="outlined" color="warning"
             onClick={() => deletePost(id)}
             className="ms-3 btn btn-danger"
+            disabled={isDeleting}
           >
-            Delete
+            {isDeleting ? <CircularProgress size={24}/> : 'Delete'}
           </Button>
         </CardContent>
       </Card>
